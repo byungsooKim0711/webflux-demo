@@ -81,10 +81,10 @@ public class WebfluxApplicationTests {
 
 	@Test
 	public void tc4_putCustomer() throws Exception {
-		Customer updated = new Customer(3L, "put", "test", 99);
+		Customer updated = new Customer(4L, "put", "test", 99);
 		this.webClient
 			.put()
-			.uri("/api/customer/put/{id}", 3)
+			.uri("/api/customer/put/{id}", 4)
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(updated))
 			.exchange()
