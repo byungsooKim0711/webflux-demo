@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://localhost:3306/webflux
+    username: root
+    password: 1234
+    driverClassName: org.mariadb.jdbc.Driver
+
+server: 
+  compression:
+    enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+  error:
+    whitelabel:
+      enabled: true
+
+logging:
+  level:
+    root: info
+
+mybatis:
+  mapper-locations: mybatis/mapper/**/*.xml
+  type-aliases-package: org.kimbs
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: true
+    auto-mapping-behavior: PARTIAL
+    default-executor-type: SIMPLE
+    default-statement-timeout: 180
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    local-cache-scope: SESSION
+    jdbc-type-for-null: OTHER
