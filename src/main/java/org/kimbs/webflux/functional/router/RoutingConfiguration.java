@@ -14,14 +14,14 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class RoutingConfiguration implements WebFluxConfigurer {
 	
     @Bean
-    public RouterFunction<ServerResponse> monoRouterFunction(CustomerHandler customerHandler) {
-        return 
+    public RouterFunction<ServerResponse> customerRouterFunction(CustomerHandler customerHandler) {
+        return
             RouterFunctions
                 .route(RequestPredicates.GET("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll)
-        		    .andRoute(RequestPredicates.GET("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getCustomer)
-        		    .andRoute(RequestPredicates.POST("/api/customer/post").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
-                    .andRoute(RequestPredicates.PUT("/api/customer/put/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
-                    .andRoute(RequestPredicates.DELETE("/api/customer/delete/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
+        		.andRoute(RequestPredicates.GET("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getCustomer)
+        		.andRoute(RequestPredicates.POST("/api/customer/post").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
+                .andRoute(RequestPredicates.PUT("/api/customer/put/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
+                .andRoute(RequestPredicates.DELETE("/api/customer/delete/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
     }
     
 }
