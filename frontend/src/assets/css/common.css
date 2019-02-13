@@ -1,0 +1,63 @@
+.break-none{display: none !important;}
+
+.notActive{pointer-events: none;color: #d5d5d5;}
+
+.paging>a:focus {outline:none }
+
+.overflowText {overflow: hidden;text-overflow: ellipsis;max-width: 150px;}
+
+/* container */
+.container{position:absolute;top:65px;left:0;right:0;bottom:40px;overflow-y:auto;overflow-x:hidden}
+
+/* table */
+.tblData.customerList thead th{padding-top:20px;padding-bottom:20px;font-size:16px}
+.tblData.customerList tbody td{padding-top:5px;padding-bottom:5px;background:#fff}
+.tblData.customerList tbody td.subject{text-align:left;padding-left:20px;padding-right:20px}
+.tblData.adcustomerListminList tbody td .state{display:inline-block;min-width:60px;height:30px;line-height:32px;background:#666;color:#fff;border-radius:15px}
+.tblData.customerList tbody td .state.on{display:inline-block;min-width:60px;height:30px;line-height:32px;background:#24c0ee;color:#fff;border-radius:15px}
+.tblData.customerList tbody td .btn{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#fff;color:#666;border: 1px solid #666;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
+.tblData.customerList tbody td .btn:hover{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#3caeef;color:#fff;border: 1px solid #3caeef;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
+.tblData.customerList tbody .complete td .state{background:#24c0ee}
+
+/* Layout */
+.wrap{min-width:1200px}
+.container{position:absolute;top:65px;left:0;right:0;bottom:40px;overflow-y:auto;overflow-x:hidden}
+.container.monitor{bottom:160px}
+#content{padding-bottom:50px}
+.innerCont{width:1200px;margin:0 auto}
+.fullCont{padding:0 14px}
+
+/* ServiceWrap */
+.serviceWrap{margin-top:30px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);border-radius:3px}
+.serviceWrap h2.tit{font-size:20px;font-weight:700;color:#222;margin-bottom:18px}
+.serviceWrap .serviceCont{background:#fff;padding:60px;box-sizing:border-box;}
+.serviceWrap .serviceCont.side:after{display:block;clear:both;content:''}
+.serviceWrap .serviceCont .countMsg + .btnArea.right{position:relative;margin-top:-40px;top:-16px}
+.serviceWrap .serviceCont .leftCont{float:left;width:750px}
+.serviceWrap .serviceCont .aSide{float:left;width:300px;margin-right:-10px;margin-left:40px}
+.serviceWrap .serviceCont .csCenter{text-align:center;border:1px solid #eaeaea;padding:36px 19px 19px 19px}
+.serviceWrap .serviceCont .csCenter .tit{display:block;font-size:18px;font-weight:700;color:#222;margin-bottom:20px}
+.serviceWrap .serviceCont .csCenter .tel{font-size:26px;font-weight:800;color:#3caeef;margin-bottom:1px}
+.serviceWrap .serviceCont .csCenter .mail{display:inline-block;font-size:18px;font-weight:700;color:#888}
+.serviceWrap .serviceCont .csCenter .date{font-size:14px;color:#666;line-height:20px;margin-top:25px}
+.serviceWrap .serviceCont .csCenter .btnArea{margin-top:25px}
+
+.btns.btnLineGray{border:1px solid #eaeaea;background:#fff}
+.btns.btnLineGray:hover{background: #eaeaea;}
+
+/* Input Text */
+.inputWrap{display:inline-block;position:relative;border:1px solid #ccc}
+.inpText{display:inline-block;width:100%;height:40px;line-height:40px;border:none;padding:0 12px;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:1px;color:#222;font-size:14px;font-weight:700;box-sizing:border-box;}
+.inpText.white{background:#fff}
+.inpText[disabled],
+.inpText[readonly]{background:#eee;color:#c5c5c5} 
+
+/* Select */
+.selectboxWrap{display:inline-block;width:100%;height:40px;vertical-align:middle;text-align:left;border:1px solid #e5e5e5;box-sizing:border-box;}
+.selectboxWrap select{position:relative;width:100%;height:100%;padding:0 12px;border:none;color:#222;font-size:14px;font-weight:700;background:#f8f8f8;box-sizing:border-box;}
+
+
+.mr10{margin-right:10px !important}
+
+/* Text */
+.txtBlue{color:#2193da !important;font-weight:bold}
