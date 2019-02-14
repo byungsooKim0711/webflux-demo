@@ -1,8 +1,5 @@
 package org.kimbs.webflux;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -10,7 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.kimbs.webflux.model.Customer;
-import org.kimbs.webflux.repository.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -27,8 +23,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-// @Rollback(true)
-// @Transactional
 public class WebfluxApplicationTests {
 
 	@Autowired
@@ -53,14 +47,14 @@ public class WebfluxApplicationTests {
 			.exchange()
 			.expectBodyList(Customer.class);
 
-		//list.contains(new Customer(1L, "byungsoo", "Kim", 26));
+		// list.contains(new Customer(1L, "byungsoo", "Kim", 26));
 	}
 
 	@Test
 	public void tc2_getCustomerById() throws Exception {
 		this.webClient
 			.get()
-			.uri("/api/customer/{id}", 1)
+			.uri("/api/customer/{id}", 2)
 			.accept(MediaType.APPLICATION_JSON)
 			.exchange()
 			.expectStatus().isOk()
@@ -86,7 +80,7 @@ public class WebfluxApplicationTests {
 
 	@Test
 	public void tc4_putCustomer() throws Exception {
-		Customer updated = new Customer(4L, "put", "test", 99);
+		Customer updated = new Customer(4L, "@@@@", "@@@@", 99);
 		EntityExchangeResult<Customer> returnResult = this.webClient
 			.put()
 			.uri("/api/customer/put/{id}", 4)
@@ -104,7 +98,7 @@ public class WebfluxApplicationTests {
 	public void tc5_deleteCustomer() throws Exception {
 		this.webClient
 			.delete()
-			.uri("/api/customer/delete/{id}", 1)
+			.uri("/api/customer/delete/{id}", 16)
 			.exchange()
 			.expectStatus().isAccepted()
 			.expectBody()

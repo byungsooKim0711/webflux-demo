@@ -1,23 +1,172 @@
-.break-none{display: none !important;}
+/* reset */
+html, body {position:relative; -webkit-font-smoothing:antialiased;height:100%;min-height:100%;min-width:1200px}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, button, address, em, img, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, hr {margin:0; padding:0}
+body {padding:0; background:#fff; font-family:'NanumSquareRound', sans-serif;font-weight:400;font-size:13px; color:#333; letter-spacing:-1px;background:#f6f6fb}
+h1, h2, h3, h4, h5, h6 {font-weight:normal}
+ol, ul, li {list-style:none}
+table {width:100%; border-collapse:collapse; border-spacing:0}
+form, fieldset, iframe {display:block; border:0}
+img, button {border:0 none; vertical-align:middle}
+hr {height:0; display:none}
+i, em, address {font-style:normal}
+label, button {cursor:pointer}
+caption, legend {width:0; height:0; margin:0; padding:0; text-indent:-9999em; overflow:hidden; font-size:0;} 
+.blind {position:absolute !important; left:-9999em; width:0; height:0; margin:0; padding:0; text-indent:-9999em; overflow:hidden; font-size:0; line-height:0;} 
+header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption {display:block}
+input, textarea, select {margin:0; padding:0; font-family:'NanumSquareRound', sans-serif; font-size:15px; font-weight: 400; color:#000; vertical-align:middle}
+textarea {border: 1px solid #666; resize:none; overflow-y:auto}
+button {overflow:visible; margin:0; padding:0; border:0 none; background:none; font-size:0; font-family:'NanumSquare', sans-serif; font-weight: 400; vertical-align:top; cursor:pointer;}
+button::-moz-focus-inner {border:0; padding:0;}
+.ellipsis {display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+a {color:#000; text-decoration:none; word-break:break-all; cursor:pointer;}
+a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
+input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 
-.notActive{pointer-events: none;color: #d5d5d5;}
+/* Input Text */
+.inputWrap{display:inline-block;position:relative;border:1px solid #ccc}
+.inpText{display:inline-block;width:100%;height:40px;line-height:40px;border:none;padding:0 12px;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:1px;color:#222;font-size:14px;font-weight:700;box-sizing:border-box;}
+.inpText.white{background:#fff}
+.inpText[disabled],
+.inpText[readonly]{background:#eee;color:#c5c5c5} 
 
-.paging>a:focus {outline:none }
+::-webkit-input-placeholder{color:#aaa}
+::-moz-placeholder{color:#aaa}
+:-ms-input-placeholder{color:#aaa}
+:-moz-placeholder{color:#aaa}
+.placeholdersjs{color:#aaa}
 
-.overflowText {overflow: hidden;text-overflow: ellipsis;max-width: 150px;}
+/* Text */
+.txtBrown{color:#ae8670 !important}
+.txtBlue{color:#364fc7 !important;font-weight:bold}
+.txtRed{color:#e5004f !important;font-weight:bold}
+.txtOrange{color:#f3b100 !important;font-weight:bold}
+.txtGreen{color:#a7c52d !important;font-weight:bold}
+.txtGreen02{color:#008995 !important;font-weight:bold}
+.txtNavy{color:#515f7a !important;font-weight:bold}
+.txtGray{color:#999 !important;}
 
-/* container */
-.container{position:absolute;top:65px;left:0;right:0;bottom:40px;overflow-y:auto;overflow-x:hidden}
+/* Button */
+.btnArea{text-align:center;font-size:0;position:relative;display:table;width:100%;}
+.btnArea:after{display:block;clear:both;content:''}
+.btnArea.left{text-align:left}
+.btnArea.right{text-align:right}
+.btnArea .btns{margin-left:5px;}
+.btnArea > .left{float:left;font-size:13px}
+.btnArea > .right{float:right;font-size:13px}
 
-/* table */
-.tblData.customerList thead th{padding-top:20px;padding-bottom:20px;font-size:16px}
+.btns{position:relative;display:inline-block;font-size:14px;font-weight:700;color:#222;vertical-align:middle;text-align:center;padding:0 15px;height:40px;line-height:38px;min-width:80px;box-sizing:border-box;border-radius:2px}
+.btns:first-child{margin-left:0}
+.btns.big{height:50px;line-height:50px;font-size:16px;width:140px}
+.btns.soloBig{width:100%;height:60px;line-height:60px;font-size:18px}
+
+
+
+.btns.btnLineGray{border:1px solid #eaeaea;background:#fff}
+.btns.btnLineBlack{border:1px solid #000;background:#fff}
+.btns.btnLineWhite{border:1px solid #e5e5e5;background:#fff}
+.btns.btnBlue{background:#2193da;color:#fff}
+.btns.btnBlack{background:#444;color:#fff}
+.btns.btnWhite{background:#fff;color:#222}
+
+.btns:hover{background:#eaeaea;}
+.btns.btnLineGray:hover{background: #eaeaea;}
+.btns.btnLineBlack:hover{background: #5a5a5a;}
+.btns.btnLineWhite:hover{background: #eaeaea;}
+.btns.btnBlue:hover{background: #24c0ee;}
+.btns.btnBlack:hover{background: #6f6f6f;}
+.btns.btnWhite:hover{background: #eaeaea;}
+
+.btns.plus span{position:relative;padding-left:27px}
+.btns.plus:hover span:before{animation: App-logo-spin infinite 1s linear;}
+.btnDel:hover{animation: App-logo-spin infinite 1s linear;}
+.btnDel.etc:hover{animation:none;}
+.btnDel.kbs:hover{animation:none;} 
+
+.control:after{display:block;content:'';clear:both}
+.control a{display:block;text-indent:-99999px;float:left;width:40px;height:40px;background-repeat:no-repeat;background-position:0 0 }
+
+/* Tab */
+.tabsGroup{position:relative;text-align:center}
+.tabsGroup .tabs{display:inline-block;position:relative;font-size:0;margin-bottom:30px}
+.tabsGroup .tabs li{display:inline-block;vertical-align:top;}
+.tabsGroup .tabs a{position:relative;display:inline-block;vertical-align:top;text-align:center;margin-left:5px;width:120px;border:1px solid #eaeaea;box-sizing:border-box;border-radius:1px;font-size:14px;font-weight:700;background:#fff;color:#666;height:36px;line-height:36px;}
+.tabsGroup .tabs a:first-child{margin-left:0}
+.tabsGroup .tabs li.on a{background:#3cc4ef;color:#fff;border:none}
+.tabsGroup .tabsCont{display:block}
+
+.tab{display:table;width:100%;table-layout:fixed;overflow:hidden}
+.tab li{display:table-cell;vertical-align:top;text-align:center;border-bottom:1px solid #f6f6f6;border-left:1px solid #f6f6f6}
+.tab li:first-child{border-left:none}
+.tab li a{display:block;background:#fff;font-size:16px;font-weight:700;color:#222;padding:21px 0}
+.tab li.on a{background:#3caeef;color:#fff}
+.tab li.on + li{border-left:none}
+
+/* TabMenu  */
+.tabMenu{position:relative;padding-right:110px;overflow:hidden}
+.tabMenu .tabs{position:relative;font-size:0; white-space: nowrap;}
+.tabMenu .tabs a{position:relative;display:inline-block;vertical-align:top;text-align:center;margin-left:5px;width:120px;border:1px solid #eaeaea;box-sizing:border-box;border-radius:1px;font-size:16px;font-weight:700;background:#fff;color:#666;height:36px;line-height:36px;overflow:hidden;text-overflow:ellipsis;}
+.tabMenu .tabs a:first-child{margin-left:0}
+.tabMenu .tabs a.on{background:#3cc4ef;color:#fff;border:none}
+
+.tabMenu .control{position:absolute;top:0;right:0}
+.tabMenu .control a{height:36px; }
+
+/* Sort */
+.sort{font-size:0;padding-top:18px}
+.sort a{position:relative;display:inline-block;font-size:14px;font-weight:700;color:#888;margin-left:20px;line-height:1;padding-bottom:12px}
+.sort a:first-child{margin-left:0}
+.sort a.on{color:#222}
+.sort a.on:before{display:block;content:'';width:100%;height:3px;background:#222;position:absolute;left:0;right:0;bottom:0}
+
+/* boxAgree */
+.boxAgree{background:#f6f6f6;margin-top:30px;padding:27px 30px}
+.boxAgree:after{display:block;clear:both;content:''}
+.boxAgree .txt{font-size:13px;font-weight:700;color:#222;float:left}
+.boxAgree .checkboxWrap{float:right}
+
+/* Table */
+.tblData thead th{border-top:1px solid #e5e5e5;border-bottom:2px solid #222;font-size:14px;font-weight:700;color:#222;text-align:center;padding:13px 0 12px 0}
+.tblData thead .require{position:relative;display:inline-block;vertical-align:top;padding-right:10px}
+.tblData tbody td{text-align:center;border-bottom:1px solid #f6f6f6;font-size:14px;font-weight:700;color:#222;padding:12px 5px}
+.tblData tbody td .num{color:#666}
+.tblData tbody td .state{color:#888}
+.tblData tbody td .state.on{color:#2193da}
+.tblData tbody td .equipState{font-size:0}
+.tblData tbody td .equipState span{display:inline-block;vertical-align:middle;margin-left:10px;}
+.tblData tbody td .equipState span:first-child{margin-left:0}
+.tblData tbody td .equipState .name{font-size:14px;font-weight:700;color:#666}
+.tblData tbody td .equipState .state{font-size:13px;font-weight:700;color:#2193da;height:24px;line-height:24px;padding:0 8px;background:#f8f8f8;border-radius:10px}
+.tblData tbody td .radioDelWrap{position:relative;text-align:left;padding-left:30px}
+.tblData tbody td .radioDelWrap .btnDel{position:absolute;top:-3px;right:-5px}
+
+.tblData.customerList thead th{padding-top:12px;padding-bottom:12px;font-size:16px}
 .tblData.customerList tbody td{padding-top:5px;padding-bottom:5px;background:#fff}
 .tblData.customerList tbody td.subject{text-align:left;padding-left:20px;padding-right:20px}
-.tblData.adcustomerListminList tbody td .state{display:inline-block;min-width:60px;height:30px;line-height:32px;background:#666;color:#fff;border-radius:15px}
+.tblData.customerList tbody td .state{display:inline-block;min-width:60px;height:30px;line-height:32px;background:#666;color:#fff;border-radius:15px}
 .tblData.customerList tbody td .state.on{display:inline-block;min-width:60px;height:30px;line-height:32px;background:#24c0ee;color:#fff;border-radius:15px}
 .tblData.customerList tbody td .btn{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#fff;color:#666;border: 1px solid #666;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
-.tblData.customerList tbody td .btn:hover{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#3caeef;color:#fff;border: 1px solid #3caeef;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
+.tblData.customerList tbody td .btn:hover{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#e6fcf5;color:#fff;border: 1px solid aqua;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
 .tblData.customerList tbody .complete td .state{background:#24c0ee}
+
+/* Paging */
+.paging{margin-top:30px;width:100%;text-align:center;font-size:0}
+.paging .current,
+.paging a{position:relative;display:inline-block;vertical-align:top;font-size:14px;color:#666;width:40px;height:40px;line-height:40px;text-align:center;box-sizing:border-box;}
+.paging .current{color:#fff;background:#fff;border:1px solid #222;color:#222;}
+
+/* LoginWrap */
+.loginWrap{padding-top:90px;}
+.loginWrap .login{width:520px;margin:0 auto;background:#fff;border-radius:3px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);padding:60px;box-sizing:border-box;}
+.loginWrap .login .loginList dt{padding-top:10px;font-size:16px;color:#222;line-height:1;margin-bottom:15px}
+.loginWrap .login .loginList dd{margin-bottom:20px}
+.loginWrap .login .loginList .inpText{height:60px;line-height:60px;font-size:18px;font-weight:700;background:#fff}
+.loginWrap .login .loginList .inpText:focus{border:1px solid #2193da}
+.loginWrap .login .btnArea{margin-top:40px;margin-bottom:60px}
+
+
+/* Box */
+.boxGray{border:1px solid #e5e5e5;border-radius:1px;padding:28px;font-size:14px;color:#222;line-height:24px;min-height:300px;box-sizing:border-box}
+.boxGray em{font-weight:700}
 
 /* Layout */
 .wrap{min-width:1200px}
@@ -27,6 +176,10 @@
 .innerCont{width:1200px;margin:0 auto}
 .fullCont{padding:0 14px}
 
+/* Top Cont */
+.topCont{position:relative;padding:8px 0}
+.topCont .center{position:absolute;top:0;left:0;right:0;width:30%;text-align:center;margin:0 auto;z-index:5}
+
 /* ServiceWrap */
 .serviceWrap{margin-top:30px;box-shadow:0 1px 3px rgba(0, 0, 0, 0.1);border-radius:3px}
 .serviceWrap h2.tit{font-size:20px;font-weight:700;color:#222;margin-bottom:18px}
@@ -34,30 +187,32 @@
 .serviceWrap .serviceCont.side:after{display:block;clear:both;content:''}
 .serviceWrap .serviceCont .countMsg + .btnArea.right{position:relative;margin-top:-40px;top:-16px}
 .serviceWrap .serviceCont .leftCont{float:left;width:750px}
-.serviceWrap .serviceCont .aSide{float:left;width:300px;margin-right:-10px;margin-left:40px}
-.serviceWrap .serviceCont .csCenter{text-align:center;border:1px solid #eaeaea;padding:36px 19px 19px 19px}
-.serviceWrap .serviceCont .csCenter .tit{display:block;font-size:18px;font-weight:700;color:#222;margin-bottom:20px}
-.serviceWrap .serviceCont .csCenter .tel{font-size:26px;font-weight:800;color:#3caeef;margin-bottom:1px}
-.serviceWrap .serviceCont .csCenter .mail{display:inline-block;font-size:18px;font-weight:700;color:#888}
-.serviceWrap .serviceCont .csCenter .date{font-size:14px;color:#666;line-height:20px;margin-top:25px}
-.serviceWrap .serviceCont .csCenter .btnArea{margin-top:25px}
 
-.btns.btnLineGray{border:1px solid #eaeaea;background:#fff}
-.btns.btnLineGray:hover{background: #eaeaea;}
+/* Header */
+#header{position:absolute;top:0;left:0;right:0;background:#fff;height:65px;text-align:center;box-shadow:0 0 16px rgba(0, 0, 0, 0.05);z-index:10}
+#header .logo{position:absolute;top:16px;left:40px;}/*animation: App-logo-spin infinite 1s linear; */
+#header #gnb ul{font-size:0}
+#header #gnb li{display:inline-block;height:65px;line-height:68px;}
+#header #gnb li a{position:relative;display:block;font-size:18px;font-weight:700;color:#666;padding:0 26px}
+#header #gnb li:hover a:before{background:#3cc4ef;display:block;content:'';height:3px;position:absolute;left:0;right:0;bottom:3px}
+#header #gnb li.on a:before{display:block;content:'';height:3px;background:#3cc4ef;position:absolute;left:0;right:0;bottom:3px}
+#header .utilMenu{position:absolute;top:25px;right:43px;font-size:0}
+#header .utilMenu a{display:inline-block;font-size:14px;font-weight:700;color:#888;margin-left:20px;vertical-align: middle;}
 
-/* Input Text */
-.inputWrap{display:inline-block;position:relative;border:1px solid #ccc}
-.inpText{display:inline-block;width:100%;height:40px;line-height:40px;border:none;padding:0 12px;background:#f8f8f8;border:1px solid #e5e5e5;border-radius:1px;color:#222;font-size:14px;font-weight:700;box-sizing:border-box;}
-.inpText.white{background:#fff}
-.inpText[disabled],
-.inpText[readonly]{background:#eee;color:#c5c5c5} 
+/* Footer */
+#footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:#f7f7fb;text-align:center;z-index:10}
+#footer .copyright{font-size:13px;font-weight:700;color:#888;line-height:40px}
+#footer .menu{position:absolute;right:24px;top:13px;}
+#footer .menu a{font-weight:700;color:#888;margin-left:20px}
+#footer .menu a.privacy{color:#666}
 
-/* Select */
-.selectboxWrap{display:inline-block;width:100%;height:40px;vertical-align:middle;text-align:left;border:1px solid #e5e5e5;box-sizing:border-box;}
-.selectboxWrap select{position:relative;width:100%;height:100%;padding:0 12px;border:none;color:#222;font-size:14px;font-weight:700;background:#f8f8f8;box-sizing:border-box;}
+/* Text overflow */
+.overflowText {overflow: hidden;text-overflow: ellipsis;max-width: 150px;}
 
-
-.mr10{margin-right:10px !important}
-
-/* Text */
-.txtBlue{color:#2193da !important;font-weight:bold}
+/* Paging */
+.paging{margin-top:30px;width:100%;text-align:center;font-size:0}
+.paging .current,
+.paging a{position:relative;display:inline-block;vertical-align:top;font-size:14px;color:#666;width:40px;height:40px;line-height:40px;text-align:center;box-sizing:border-box;}
+.paging .current{color:#fff;background:#fff;border:1px solid #222;color:#222;}
+/* .paging .btnPrev{text-indent:-9999px;background:url(../images/btn_paging_prev.png) no-repeat 50%}
+.paging .btnNext{text-indent:-9999px;background:url(../images/btn_paging_next.png) no-repeat 50%;} */

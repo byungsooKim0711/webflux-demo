@@ -11,7 +11,7 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-public class RoutingConfiguration implements WebFluxConfigurer {
+public class CustomerRouter implements WebFluxConfigurer {
 	
     @Bean
     public RouterFunction<ServerResponse> customerRouterFunction(CustomerHandler customerHandler) {
