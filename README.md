@@ -5,6 +5,7 @@
 - **npm install axios**
 - **npm install vuex --save**
 - **vuex install**
+- **npm install vue-js-modal --save**
 - **vue-js-modal install**
 - **npm run dev (port: 80)**
 - **./mvnw spring-boot:run (port: 8080)**
@@ -21,3 +22,5 @@
 
 # [2019-02-13]
 - docker + jenkins 테스트
+
+# [2019-02-15]

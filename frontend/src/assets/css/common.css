@@ -1,7 +1,7 @@
 /* reset */
 html, body {position:relative; -webkit-font-smoothing:antialiased;height:100%;min-height:100%;min-width:1200px}
 html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, button, address, em, img, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,table, caption, tbody, tfoot, thead, tr, th, td, hr {margin:0; padding:0}
-body {padding:0; background:#fff; font-family:'NanumSquareRound', sans-serif;font-weight:400;font-size:13px; color:#333; letter-spacing:-1px;background:#f6f6fb}
+body {padding:0; background:#fff; font-family:'NanumSquareRound', sans-serif;font-weight:400;font-size:13px; color:#333; letter-spacing:-1px;background:#f9fbff}
 h1, h2, h3, h4, h5, h6 {font-weight:normal}
 ol, ul, li {list-style:none}
 table {width:100%; border-collapse:collapse; border-spacing:0}
@@ -20,7 +20,7 @@ button::-moz-focus-inner {border:0; padding:0;}
 .ellipsis {display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 a {color:#000; text-decoration:none; word-break:break-all; cursor:pointer;}
 a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
-input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
+
 
 /* Input Text */
 .inputWrap{display:inline-block;position:relative;border:1px solid #ccc}
@@ -58,7 +58,6 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 .btns:first-child{margin-left:0}
 .btns.big{height:50px;line-height:50px;font-size:16px;width:140px}
 .btns.soloBig{width:100%;height:60px;line-height:60px;font-size:18px}
-
 
 
 .btns.btnLineGray{border:1px solid #eaeaea;background:#fff}
@@ -101,16 +100,6 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 .tab li.on a{background:#3caeef;color:#fff}
 .tab li.on + li{border-left:none}
 
-/* TabMenu  */
-.tabMenu{position:relative;padding-right:110px;overflow:hidden}
-.tabMenu .tabs{position:relative;font-size:0; white-space: nowrap;}
-.tabMenu .tabs a{position:relative;display:inline-block;vertical-align:top;text-align:center;margin-left:5px;width:120px;border:1px solid #eaeaea;box-sizing:border-box;border-radius:1px;font-size:16px;font-weight:700;background:#fff;color:#666;height:36px;line-height:36px;overflow:hidden;text-overflow:ellipsis;}
-.tabMenu .tabs a:first-child{margin-left:0}
-.tabMenu .tabs a.on{background:#3cc4ef;color:#fff;border:none}
-
-.tabMenu .control{position:absolute;top:0;right:0}
-.tabMenu .control a{height:36px; }
-
 /* Sort */
 .sort{font-size:0;padding-top:18px}
 .sort a{position:relative;display:inline-block;font-size:14px;font-weight:700;color:#888;margin-left:20px;line-height:1;padding-bottom:12px}
@@ -147,6 +136,34 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 .tblData.customerList tbody td .btn{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#fff;color:#666;border: 1px solid #666;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
 .tblData.customerList tbody td .btn:hover{display:inline-block;min-width:40px;height:30px;line-height:32px;background:#e6fcf5;color:#fff;border: 1px solid aqua;border-radius:15px;padding-left:10px;padding-right:10px;cursor:pointer;}
 .tblData.customerList tbody .complete td .state{background:#24c0ee}
+
+.tblForm tbody th{font-size:14px;font-weight:800;color:#222;text-align:left;padding-top:10px}
+.tblForm tbody th.vt{position:relative;top:15px;vertical-align:top}
+.tblForm tbody td{font-size:14px;text-align:left;padding-top:10px}
+.tblForm tbody tr:first-child th, 
+.tblForm tbody tr:first-child td{padding-top:0}
+.tblForm tbody .require{position:relative;display:inline-block;vertical-align:top;padding-right:10px}
+.tblForm tbody .radioWrap > span{line-height:40px}
+.tblForm tbody .message{font-size:13px;font-weight:700;color:#888;margin-top:8px;margin-bottom:15px}
+.tblForm tbody .line th,
+.tblForm tbody .line td{border-bottom:1px solid #f6f6f6;padding-bottom:20px}
+.tblForm tbody .line + tr th,
+.tblForm tbody .line + tr td{padding-top:20px}
+
+.tblForm.default{border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-top:20px;}
+.tblForm.default tbody th{padding-top:0;padding-bottom:20px;padding-left:20px;font-size:16px;font-weight:700}
+.tblForm.default tbody td{padding-top:0;padding-bottom:20px;font-size:16px;}
+.tblForm.default tbody td .inpText,
+.tblForm.default tbody td .selectboxWrap select,
+.tblForm.default tbody td textarea{font-size:16px}
+.tblForm.default .formHorizental .msg{font-size:14px}
+.tblForm.default label{font-size:16px !important}
+
+.tblForm.default.line{padding-top:0;border-top:1px solid #f6f6f6;border-bottom:1px solid #f6f6f6}
+.tblForm.default.line tbody th{padding:20px 0 20px 20px;border-top:1px solid #f6f6f6}
+.tblForm.default.line tbody td{padding:20px 0;border-top:1px solid #f6f6f6;font-weight:800;}
+.tblForm.default.line tbody :first-child th,
+.tblForm.default.line tbody :first-child td{border-top:none}
 
 /* Paging */
 .paging{margin-top:30px;width:100%;text-align:center;font-size:0}
@@ -194,13 +211,13 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 #header #gnb ul{font-size:0}
 #header #gnb li{display:inline-block;height:65px;line-height:68px;}
 #header #gnb li a{position:relative;display:block;font-size:18px;font-weight:700;color:#666;padding:0 26px}
-#header #gnb li:hover a:before{background:#3cc4ef;display:block;content:'';height:3px;position:absolute;left:0;right:0;bottom:3px}
-#header #gnb li.on a:before{display:block;content:'';height:3px;background:#3cc4ef;position:absolute;left:0;right:0;bottom:3px}
+#header #gnb li:hover a:before{background:#91a7ff;display:block;content:'';height:3px;position:absolute;left:0;right:0;bottom:5px;}
+#header #gnb li.on a:before{display:block;content:'';height:3px;background:#91a7ff;position:absolute;left:0;right:0;bottom:5px}
 #header .utilMenu{position:absolute;top:25px;right:43px;font-size:0}
 #header .utilMenu a{display:inline-block;font-size:14px;font-weight:700;color:#888;margin-left:20px;vertical-align: middle;}
 
 /* Footer */
-#footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:#f7f7fb;text-align:center;z-index:10}
+#footer{position:absolute;left:0;right:0;bottom:0;height:40px;background:#f9fbff;text-align:center;z-index:10; box-shadow:16px rgba(0, 0, 0, 0.05);}
 #footer .copyright{font-size:13px;font-weight:700;color:#888;line-height:40px}
 #footer .menu{position:absolute;right:24px;top:13px;}
 #footer .menu a{font-weight:700;color:#888;margin-left:20px}
@@ -216,3 +233,29 @@ input:-webkit-autofill{-webkit-box-shadow:0 0 0px 1000px white inset;}
 .paging .current{color:#fff;background:#fff;border:1px solid #222;color:#222;}
 /* .paging .btnPrev{text-indent:-9999px;background:url(../images/btn_paging_prev.png) no-repeat 50%}
 .paging .btnNext{text-indent:-9999px;background:url(../images/btn_paging_next.png) no-repeat 50%;} */
+
+/* 레이어 팝업 */
+.popupWrap{display:inline-block;position: relative;top:0;left:0;right:0;bottom:0;z-index:1000;}
+.popupWrap:after{display:block;content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:#000;opacity:0.5;}
+.popupWrap .popupContent{position:relative;z-index:10;width:480px;margin:0 auto;top:0;border-radius:1px;background-color:#fff;}
+.popupWrap .popupContent.small{width:400px}
+.popupWrap .popupContent.medium{width:600px}
+.popupWrap .popupContent.big{width:800px}
+.popupWrap .popupContent.big2{width:1000px}
+.popupWrap .popupContent.big3{width:1200px}
+.popupWrap .popupHead{border-bottom:1px solid #f6f6f6;padding:20px 0;text-align:center}
+.popupWrap .popupHead .tit{font-size:18px;font-weight:800;color:#222}
+.popupWrap .popupCont{padding:25px 30px 30px 30px;background:#fff}
+.popupWrap .popupCont .tit{display:block;font-size:16px;font-weight:700;color:#222;margin-bottom:20px}
+.popupWrap .popupTop{padding:10px 30px;border-bottom:1px solid #f6f6f6}
+.popupWrap .popupTop + .popupCont{padding-top:5px}
+.popupWrap .popupCont.gray{background:#fafafa}
+.popupWrap .btnArea.btm{margin-top:20px}
+
+.popupWrap .topTitle{position:relative;text-align:center;margin-bottom:20px}
+.popupWrap .topTitle .name{display:inline-block;font-size:18px;font-weight:700;color:#222;margin-right:10px}
+.popupWrap .topTitle .date{display:inline-block;font-size:14px;color:#888}
+.popupWrap .topTitle .btnBox{position:absolute;top:-9px;right:0}
+
+.popupWrap .popupTop .topTitle{margin-bottom:0}
+.popupWrap .popupTop .topTitle .btnBox{top:0}

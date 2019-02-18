@@ -1,6 +1,6 @@
 <template>
     <div class="error error-404">
-        <div>
+        <div class="position">
             <p class="error code">
                 404 Not Found
             </p>
@@ -25,7 +25,8 @@
 </script>
 
 <style scoped>
-    .error.error-404 {background: linear-gradient(45deg, rgba(59,173,227,0.2) 0%, rgba(87,111,230,0.2) 25%, rgba(152,68,183,0.2) 51%, rgba(255,53,127,0.2) 100%);height: calc(100% - 40px);text-align: center;font-weight: bold;}
+    .error.error-404 {background: linear-gradient(45deg, rgba(59,173,227,0.2) 0%, rgba(87,111,230,0.2) 25%, rgba(152,68,183,0.2) 51%, rgba(255,53,127,0.2) 100%);height: 100vh;text-align: center;font-weight: bold;}
+    .error .position {position: fixed; top:50%; left:50%; margin-left: -390px; margin-top: -190px;}
     .error.code {font-size: 90px;text-align: center;color: white;margin: 0;}
     
     .mt-30 {margin-top: 30px;}

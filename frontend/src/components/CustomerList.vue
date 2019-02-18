@@ -11,7 +11,7 @@
 							<div class="btnArea right">
                                 <input id="searchInput" placeholder="검색" type="text" class="inpText mr10" style="width:200px;">
                                 <span>검색</span>
-								<a class="btns btnLineGray plus txtBlue">
+								<a @click="insertCustomer" class="btns btnLineGray plus txtBlue">
 									<span>등록</span>
 								</a>
 							</div>
@@ -29,7 +29,7 @@
 										<tr>
 											<th scope="col">번호</th>
 											<th scope="col">이름</th>
-											<th scope="col">성</th>
+											<th scope="col">성씨</th>
 											<th scope="col">나이</th>
 											<th scope="col">작업</th>
 										</tr>
@@ -41,7 +41,7 @@
                                             <td class="overflowText" :title="customer.lastname">{{customer.lastname}}</td>
 											<td class="overflowText" >{{customer.age}}</td>
                                             <td>
-                                                <em class="btn txtGreen02" @click="getOneCustomerById(customer)">수정</em>
+                                                <em class="btn txtGreen02" @click="updateCustomerById(customer)">수정</em>
                                                 <em class="btn txtRed" @click="deleteCustomerById(customer)">삭제</em>
                                             </td>
 										</tr>
@@ -50,13 +50,13 @@
 							</div>
 							<!-- tblData : e -->
 							<!-- 페이징 : s -->
-							<div class="paging">
+							<!-- <div class="paging">
 								<a class="btnPrev">prev</a>
-								<span v-for="n in (customers.length)/5" :key="n">
+								<span v-for="n in ((customers.length))" :key="n">
 									<a @click="getCustomerListOfCurrentPage(n)">{{n}}</a>
 								</span>
 								<a class="btnNext">next</a>
-							</div>
+							</div> -->
 							<!-- 페이징 : e -->
 						</div>
 					</div>
@@ -70,81 +70,91 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { mapGetters } from 'vuex';
+import InsertCustomerModal from './InsertCustomerModal.vue';
+import UpdateCustomerModal from './UpdateCustomerModal.vue';
 
 export default {
 	name: "crud-component",
 
+	computed: {
+		...mapGetters({
+			customers: 'getCustomers'
+		})
+	},
+
 	data() {
 		return {
-			customers: []
+			/* pageNum: 1,
+			limitNum: 5,
+			count: 10,
+
+			paginate: {
+				pageNum: '',
+				count: ''
+			} */
 		}
 	},
 
 	components: {},
 
-	computed: {},
-
 	methods: {
 		getAllCustomers: function() {
-			axios.get('/api/customer', {
-
-			}).then((response) => {
-				this.customers = response.data;
-			}).catch((error) => {
-				console.log(error);
-			});
-		},
-
-		getOneCustomerById: function(customer) {
-			console.log(customer)
-			axios.get('/api/customer/' + customer.id, {
-
-			}).then((response) => {
-				console.log(response.data);
-			}).catch((error) => {
-				console.log(error);
-			});
-		},
-
-		insertCustomer: function() {
-			axios.post('/api/customer/post', {
-
-			}).then((response) => {
-				console.log(response.data);
-			}).catch((error) => {
-				console.log(error);
-			});
+			this.$store.dispatch('LOAD_CUSTOMERS');
 		},
 
 		deleteCustomerById: function(customer) {
-			axios.delete('/api/customer/delete/' + customer.id, {
-
-			}).then((response) => {
-				this.customers = this.customers.filter(c => c.id != customer.id);
-			}).catch((error) => {
-				console.log(error);
-			});
-		},
-
-		updateCustomerById: function(customer) {
-			axios.put('/api/customer/put/' + customer.id, {
-
-			}).then((response) => {
-				console.log(response.data);
-			}).catch((error) => {
-				console.log(error);
-			});
+			if (confirm("삭제하시겠습니까?")) {
+				this.$store.dispatch('DELETE_CUSTOMER', customer);
+			}
 		},
 
 		getCustomerListOfCurrentPage: function(n) {
 
+		},
+
+		insertCustomer: function() {
+			this.$modal.show(
+                InsertCustomerModal, {
+                    text: "insertCustomerModal"
+                }, 
+                {
+			        width: "400px",
+					height: "auto",
+					scrollable: true
+                }, 
+                {
+			        name: 'insert-customer',
+					clickToClose: false,
+					transition:true
+			    }
+		    );
+		},
+
+		updateCustomerById: function(customer) {
+			this.$modal.show(
+                UpdateCustomerModal, {
+                    customer: customer
+                }, 
+                {
+			        width: "400px",
+					height: "auto",
+					scrollable: true
+                }, 
+                {
+			        name: 'insert-customer',
+					clickToClose: false,
+					transition:true
+			    }
+		    );
 		}
 	},
 
-	created () {},
-	mounted () {
+	created () {
 		this.getAllCustomers();
+	},
+	mounted () {
+		// pageNum: 1, limitNum: 5, count: 10
 	},
 	destroyed () {},
 	updated () {}

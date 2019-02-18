@@ -24,7 +24,7 @@
             customer
     </select>
 
-    <insert id="inserCustomer" parameterType="org.kimbs.webflux.model.Customer">
+    <insert id="inserCustomer" parameterType="org.kimbs.webflux.model.Customer" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         INSERT INTO
             customer (
                   id

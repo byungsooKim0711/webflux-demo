@@ -2,8 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 /* Components */
-import CRUDComponent from '@/components/CRUDComponent'
-import PageNotFound from '@/components/PageNotFound'
+import CustomerList from '@/components/CustomerList.vue'
+import PageNotFound from '@/components/PageNotFound.vue'
+import LoginComponent from '@/components/LoginComponent.vue'
 
 Vue.use(Router)
 
@@ -11,11 +12,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'CRUDComponent',
-      component: CRUDComponent,
+      name: 'CustomerList',
+      component: CustomerList,
       children: [
         // {path: '...', component: ...},
       ]
+    },
+    {
+      path: '/login',
+      name: 'LoginComponent',
+      component: LoginComponent,
     },
 
     // 맨 아래에 *이 있으면 위에 리스트를 제외한 나머지

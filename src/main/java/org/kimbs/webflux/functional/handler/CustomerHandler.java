@@ -25,9 +25,7 @@ public class CustomerHandler {
 
     public Mono<ServerResponse> getCustomer(ServerRequest request) {
         long customerId = Long.valueOf(request.pathVariable("id"));
-
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
-
         Mono<Customer> customerMono = customerService.getCustomerById(customerId);
 
         return customerMono.flatMap(customer -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
@@ -65,7 +63,6 @@ public class CustomerHandler {
 
     public Mono<ServerResponse> deleteCustomer(ServerRequest request) {
         long customerId = Long.valueOf(request.pathVariable("id"));
-
         return ServerResponse
                 .accepted()
                 .build(customerService.deleteCustomer(customerId));
