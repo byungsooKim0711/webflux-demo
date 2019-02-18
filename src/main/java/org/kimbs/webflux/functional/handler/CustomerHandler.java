@@ -19,7 +19,7 @@ public class CustomerHandler {
     private CustomerService customerService;
 
     public Mono<ServerResponse> getAll(ServerRequest request) {
-        Flux<Customer> customers = this.customerService.getAllCustomers();
+        Flux<Customer> customers = this.customerService.getAllCustomers(request.queryParams().toSingleValueMap());
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Customer.class);
     }
 

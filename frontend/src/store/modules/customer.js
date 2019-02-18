@@ -29,9 +29,11 @@ const mutations = {
 }
 
 const actions = {
-    LOAD_CUSTOMERS ( {commit} ) {
-        return axios.get('/api/customer', {
-
+    LOAD_CUSTOMERS ( {commit}, search ) {
+        return axios.get('/api/customer', { 
+            params: {
+                ...(search ? {search: search}: {})
+            }
         }).then((response) => {
             commit('LOAD_CUSTOMERS', response.data);
         }).catch((error) => {

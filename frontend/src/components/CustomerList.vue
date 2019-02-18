@@ -9,7 +9,7 @@
 							<h2 class="tit">고객관리</h2>
 							<p class="countMsg">총 <em class="count txtBlue">{{customers.length}}</em> 건의 고객 검색되었습니다.</p>
 							<div class="btnArea right">
-                                <input id="searchInput" placeholder="검색" type="text" class="inpText mr10" style="width:200px;">
+                                <input id="searchInput" v-model="search" @keyup="handleChange()" placeholder="검색" type="text" class="inpText mr10" style="width:200px;">
                                 <span>검색</span>
 								<a @click="insertCustomer" class="btns btnLineGray plus txtBlue">
 									<span>등록</span>
@@ -93,14 +93,16 @@ export default {
 				pageNum: '',
 				count: ''
 			} */
+			_timer: 5000,
+			search: ''
 		}
 	},
 
 	components: {},
 
 	methods: {
-		getAllCustomers: function() {
-			this.$store.dispatch('LOAD_CUSTOMERS');
+		getCustomers: function() {
+			this.$store.dispatch('LOAD_CUSTOMERS', this.search);
 		},
 
 		deleteCustomerById: function(customer) {
@@ -147,11 +149,18 @@ export default {
 					transition:true
 			    }
 		    );
+		},
+
+		handleChange() {
+			clearTimeout(this._timer);
+			this._timer = window.setTimeout(() => {
+				this.getCustomers();
+			}, 500);
 		}
 	},
 
 	created () {
-		this.getAllCustomers();
+		this.getCustomers();
 	},
 	mounted () {
 		// pageNum: 1, limitNum: 5, count: 10

@@ -1,6 +1,7 @@
 package org.kimbs.webflux.repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -10,7 +11,7 @@ import org.kimbs.webflux.model.Customer;
 public interface CustomerMapper {
     public Optional<Customer> selectCustomerById(Long id);
 
-    public List<Customer> selectCustomers();
+    public List<Customer> selectCustomers(Map<String, String> map);
     
     public Integer inserCustomer(Customer customer);
 

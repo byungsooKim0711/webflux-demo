@@ -1,5 +1,7 @@
 package org.kimbs.webflux.service;
 
+import java.util.Map;
+
 import org.kimbs.webflux.model.Customer;
 import org.kimbs.webflux.repository.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,8 @@ public class CustomerService {
         return Mono.justOrEmpty(this.customerMapper.selectCustomerById(id));
     }
 
-    public Flux<Customer> getAllCustomers() {
-        return Flux.fromIterable(this.customerMapper.selectCustomers());
+    public Flux<Customer> getAllCustomers(Map<String, String> map) {
+        return Flux.fromIterable(this.customerMapper.selectCustomers(map));
     }
 
     public Mono<Customer> saveCustomer(Mono<Customer> customer) {
