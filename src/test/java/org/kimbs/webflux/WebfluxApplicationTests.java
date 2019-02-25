@@ -67,7 +67,7 @@ public class WebfluxApplicationTests {
 		Customer created = new Customer(null, "Kent", "Beck", 57);
 		EntityExchangeResult<Customer> returnResult = this.webClient
 			.post()
-			.uri("/api/customer/post")
+			.uri("/api/customer")
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created))
 			.exchange()
@@ -83,7 +83,7 @@ public class WebfluxApplicationTests {
 		Customer updated = new Customer(4L, "@@@@", "@@@@", 99);
 		EntityExchangeResult<Customer> returnResult = this.webClient
 			.put()
-			.uri("/api/customer/put/{id}", 4)
+			.uri("/api/customer/{id}", 4)
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(updated))
 			.exchange()
@@ -98,7 +98,7 @@ public class WebfluxApplicationTests {
 	public void tc5_deleteCustomer() throws Exception {
 		this.webClient
 			.delete()
-			.uri("/api/customer/delete/{id}", 16)
+			.uri("/api/customer/{id}", 16)
 			.exchange()
 			.expectStatus().isAccepted()
 			.expectBody()

@@ -9,6 +9,14 @@
 							<h2 class="tit">고객관리</h2>
 							<p class="countMsg">총 <em class="count txtBlue">{{customers.length}}</em> 건의 고객 검색되었습니다.</p>
 							<div class="btnArea right">
+								<!-- <span class="selectboxWrap mr10" style="width:94px">
+                                    <select>
+                                        <option value="ALL">10개씩 보기</option>
+                                        <option value="Y">25개씩 보기</option>
+                                        <option value="N">50개씩 보기</option>
+										<option value="N">100개씩 보기</option>
+                                    </select>
+                                </span> -->
                                 <input id="searchInput" v-model="search" @keyup="handleChange()" placeholder="검색" type="text" class="inpText mr10" style="width:200px;">
                                 <span>검색</span>
 								<a @click="insertCustomer" class="btns btnLineGray plus txtBlue">
@@ -66,7 +74,7 @@
 	</div>
 	<!-- container : e -->
 
-	<!-- pagination + N개 검색 (10, 20, 50, 100) -->
+	<!-- pagination + N개 검색 (10, 25, 50, 100) -->
 </template>
 
 <script>
@@ -86,13 +94,8 @@ export default {
 	data() {
 		return {
 			/* pageNum: 1,
-			limitNum: 5,
 			count: 10,
-
-			paginate: {
-				pageNum: '',
-				count: ''
-			} */
+			limitNum: 5, */
 			_timer: 5000,
 			search: ''
 		}

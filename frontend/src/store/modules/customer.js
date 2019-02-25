@@ -42,7 +42,7 @@ const actions = {
     },
 
     DELETE_CUSTOMER ( {commit}, customer ) {
-        axios.delete('/api/customer/delete/' + customer.id, {
+        axios.delete('/api/customer/' + customer.id, {
 
         }).then((response) => {
             commit('DELETE_CUSTOMER', customer);
@@ -52,7 +52,7 @@ const actions = {
     },
 
     UPDATE_CUSTOMER ( {commit}, customer) {
-        axios.put('/api/customer/put/' + customer.id, customer, {
+        axios.put('/api/customer/' + customer.id, customer, {
 
         }).then((response) => {
             commit('UPDATE_CUSTOMER', response.data);
@@ -62,7 +62,7 @@ const actions = {
     },
 
     INSERT_CUSTOMER ( {commit}, customer) {
-        axios.post('/api/customer/post', customer, {
+        axios.post('/api/customer', customer, {
 
         }).then((response) => {
             commit('INSERT_CUSTOMER', response.data);

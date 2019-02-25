@@ -1,8 +1,8 @@
 <template>
     <div id="header">
         <div id="gnb">
-            <li><router-link to="/">Customer</router-link></li>
-            <li><router-link to="/">Test</router-link></li>
+            <li><router-link to="/">Index</router-link></li>
+            <li><router-link to="/customer">Customer</router-link></li>
         </div>
 
         <div class="utilMenu">

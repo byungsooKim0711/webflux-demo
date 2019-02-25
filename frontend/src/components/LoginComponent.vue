@@ -2,8 +2,8 @@
     <div class="container">
         <p class="sign" align="center">SIGN IN</p>
         <div class="form1">
-            <input name="username" class="un " type="text" align="center" placeholder="Username">
-            <input name="password" class="pass" type="password" align="center" placeholder="Password">
+            <input name="username" class="un " type="text" align="center" placeholder="Username" v-model="username">
+            <input name="password" class="pass" type="password" align="center" placeholder="Password" v-model="password">
             <button @click="login" class="submit" align="center">SIGN IN</button>
             <button @click="loginWithFacebook" class="facebook" align="center">LOGIN WITH FACEBOOK</button>
             <button @click="loginWithGoogle" class="google" align="center">LOGIN WITH GOOGLE+</button>
@@ -25,7 +25,7 @@ export default {
 
     methods: {
         login: function() {
-            
+            console.log(this.username, this.password);
         },
 
         loginWithGoogle: function () {

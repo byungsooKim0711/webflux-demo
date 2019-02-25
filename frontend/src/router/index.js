@@ -5,6 +5,7 @@ import Router from 'vue-router'
 import CustomerList from '@/components/CustomerList.vue'
 import PageNotFound from '@/components/PageNotFound.vue'
 import LoginComponent from '@/components/LoginComponent.vue'
+import Index from '@/components/Index.vue'
 
 Vue.use(Router)
 
@@ -12,11 +13,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'CustomerList',
-      component: CustomerList,
+      name: 'Index',
+      component: Index,
       children: [
         // {path: '...', component: ...},
       ]
+    },
+    {
+      path: '/customer',
+      name: 'CustomerList',
+      component: CustomerList
     },
     {
       path: '/login',

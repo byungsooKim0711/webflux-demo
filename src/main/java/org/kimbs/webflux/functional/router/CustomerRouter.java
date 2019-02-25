@@ -19,9 +19,8 @@ public class CustomerRouter implements WebFluxConfigurer {
             RouterFunctions
                 .route(RequestPredicates.GET("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll)
         		.andRoute(RequestPredicates.GET("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getCustomer)
-        		.andRoute(RequestPredicates.POST("/api/customer/post").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
-                .andRoute(RequestPredicates.PUT("/api/customer/put/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
-                .andRoute(RequestPredicates.DELETE("/api/customer/delete/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
-    }
-    
+        		.andRoute(RequestPredicates.POST("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
+                .andRoute(RequestPredicates.PUT("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
+                .andRoute(RequestPredicates.DELETE("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
+    }    
 }

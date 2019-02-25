@@ -19,6 +19,7 @@ public class CustomerHandler {
     private CustomerService customerService;
 
     public Mono<ServerResponse> getAll(ServerRequest request) {
+        // log.info(new HandlerLog(request.method().toString(), request.attribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).get().toString(), ZonedDateTime.now()).toString());
         Flux<Customer> customers = this.customerService.getAllCustomers(request.queryParams().toSingleValueMap());
         return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Customer.class);
     }
@@ -38,7 +39,7 @@ public class CustomerHandler {
         return customerService.saveCustomer(customer)
             .flatMap(c -> 
                 ServerResponse
-                    //.created(uri)
+                    // .created()
                     .ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(BodyInserters.fromObject(c))

@@ -18,6 +18,7 @@ public class CustomerService {
 
     public Mono<Customer> getCustomerById(Long id) {
         return Mono.justOrEmpty(this.customerMapper.selectCustomerById(id));
+        // return Mono.fromSupplier(() -> this.customerMapper.selectCustomerById(id).get());
     }
 
     public Flux<Customer> getAllCustomers(Map<String, String> map) {

@@ -259,3 +259,10 @@ a:link, a:visited, a:hover, a:active, a:focus {text-decoration:none;}
 
 .popupWrap .popupTop .topTitle{margin-bottom:0}
 .popupWrap .popupTop .topTitle .btnBox{top:0}
+
+/* Select */
+.selectboxWrap{display:inline-block;width:100%;height:40px;vertical-align:middle;text-align:left;border:1px solid #e5e5e5;box-sizing:border-box;}
+.selectboxWrap select{position:relative;width:100%;height:100%;padding:0 12px;border:none;color:#222;font-size:14px;font-weight:700;background:#f8f8f8;box-sizing:border-box;}
+
+/* Margin */
+.mr10 {margin-left: 10px; margin-right: 10px;}

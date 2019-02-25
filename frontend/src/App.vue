@@ -19,10 +19,6 @@ export default {
   components: {
     Header,
     Footer
-  },
-
-  created() {
-    console.log(this.$route.path);
   }
 }
 </script>
