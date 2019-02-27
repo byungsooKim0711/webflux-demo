@@ -1,6 +1,16 @@
 # webflux-demo
 웹플럭스 데모 프로젝트
 
+# Database
+``` bash
+    CREATE TABLE customer (
+          id INT AUTO_INCREMENT PRIMARY KEY
+        , firstname VARCHAR(50)
+        , lastname VARCHAR(50)
+        , age INT
+    );
+```
+
 # 
 - **npm install axios**
 - **npm install vuex --save**
