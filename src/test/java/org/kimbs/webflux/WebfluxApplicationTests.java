@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class WebfluxApplicationTests {
 
     @Autowired
-    private WebTestClient webClient;
+	private WebTestClient webClient;
 
 	/* GET Method TEST */
 	@Test
