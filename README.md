@@ -11,7 +11,8 @@
     );
 ```
 
-# 
+# RUN
+``` bash
 - **npm install axios**
 - **npm install vuex --save**
 - **vuex install**
@@ -19,6 +20,7 @@
 - **vue-js-modal install**
 - **npm run dev (port: 80)**
 - **./mvnw spring-boot:run (port: 8080)**
+```
 
 # [2019-02-12]
 - mybatis, mariadb와 연동
@@ -34,3 +36,8 @@
 - docker + jenkins 테스트
 
 # [2019-02-15]
+
+.....
+
+# [2019-02-27]
+- H2 (In-Memory Database)로 테스트 설정환경 구성

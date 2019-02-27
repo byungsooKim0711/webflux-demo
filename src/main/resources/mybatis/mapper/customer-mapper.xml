@@ -38,7 +38,7 @@
                 , age
             )
         VALUES (
-              null
+              #{id}
             , #{firstname}
             , #{lastname}
             , #{age}

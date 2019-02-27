@@ -34,3 +34,21 @@ mybatis:
     map-underscore-to-camel-case: true
     local-cache-scope: SESSION
     jdbc-type-for-null: OTHER
+
+
+---
+spring:
+  profiles: test
+  # flyway:
+    # locations: classpath:sql/customer.sql
+  datasource:
+    url: jdbc:h2:mem:testdb;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    # data: classpath:schema.sql
+    initialization-mode: ALWAYS
+  h2:
+    console:
+      enabled: true
+  
