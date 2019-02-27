@@ -19,9 +19,11 @@ public class CustomerHandler {
     private CustomerService customerService;
 
     public Mono<ServerResponse> getAll(ServerRequest request) {
-        // log.info(new HandlerLog(request.method().toString(), request.attribute(HandlerMapping.BEST_MATCHING_PATTERN_ATTRIBUTE).get().toString(), ZonedDateTime.now()).toString());
         Flux<Customer> customers = this.customerService.getAllCustomers(request.queryParams().toSingleValueMap());
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(customers, Customer.class);
+        return ServerResponse
+                .ok()
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(customers, Customer.class);
     }
 
     public Mono<ServerResponse> getCustomer(ServerRequest request) {
@@ -29,13 +31,13 @@ public class CustomerHandler {
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
         Mono<Customer> customerMono = customerService.getCustomerById(customerId);
 
-        return customerMono.flatMap(customer -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-                .body(BodyInserters.fromObject(customer))).switchIfEmpty(notFound);
+        return customerMono
+                .flatMap(customer -> ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(BodyInserters.fromObject(customer)))
+                .switchIfEmpty(notFound);
     }
 
     public Mono<ServerResponse> postCustomer(ServerRequest request) {
         Mono<Customer> customer = request.bodyToMono(Customer.class);
-
         return customerService.saveCustomer(customer)
             .flatMap(c -> 
                 ServerResponse
@@ -48,9 +50,7 @@ public class CustomerHandler {
 
     public Mono<ServerResponse> putCustomer(ServerRequest request) {
         long customerId = Long.valueOf(request.pathVariable("id"));
-
         Mono<Customer> customer = request.bodyToMono(Customer.class);
-
         Mono<Customer> responseMono = customerService.putCustomer(customerId, customer);
 
         return responseMono

@@ -15,12 +15,15 @@ public class CustomerRouter implements WebFluxConfigurer {
 	
     @Bean
     public RouterFunction<ServerResponse> customerRouterFunction(CustomerHandler customerHandler) {
+        RoutingFilterFunction f = new RoutingFilterFunction();
+
         return
             RouterFunctions
                 .route(RequestPredicates.GET("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll)
         		.andRoute(RequestPredicates.GET("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getCustomer)
         		.andRoute(RequestPredicates.POST("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
                 .andRoute(RequestPredicates.PUT("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
-                .andRoute(RequestPredicates.DELETE("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer);
+                .andRoute(RequestPredicates.DELETE("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer)
+                .filter(f);
     }    
 }
