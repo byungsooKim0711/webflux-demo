@@ -13,13 +13,13 @@
 
 # RUN
 ``` bash
-- **npm install axios**
-- **npm install vuex --save**
-- **vuex install**
-- **npm install vue-js-modal --save**
-- **vue-js-modal install**
-- **npm run dev (port: 80)**
-- **./mvnw spring-boot:run (port: 8080)**
+- npm install axios
+- npm install vuex --save
+- vuex install
+- npm install vue-js-modal --save
+- vue-js-modal install
+- npm run dev (port: 80)
+- ./mvnw spring-boot:run (port: 8080)
 ```
 
 # [2019-02-12]
@@ -41,3 +41,6 @@
 
 # [2019-02-27]
 - H2 (In-Memory Database)로 테스트 설정환경 구성
+
+# [2019-02-28]
+- 이름 검색조건에 대한 테스트코드 추가

@@ -1,8 +1,10 @@
 package org.kimbs.webflux;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kimbs.webflux.model.Customer;
+import org.kimbs.webflux.repository.MapperForTestCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
@@ -14,6 +16,9 @@ import org.springframework.web.reactive.function.BodyInserters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("test")
@@ -21,6 +26,14 @@ public class WebfluxApplicationTests {
 
     @Autowired
 	private WebTestClient webClient;
+
+	@Autowired
+	private MapperForTestCode mapper;
+
+	@After
+	public void tearDown() throws Exception {
+		mapper.deleteAllCustomers();
+	}
 
 	/* GET Method TEST */
 	@Test
@@ -34,10 +47,10 @@ public class WebfluxApplicationTests {
     }
 	
 	/* POST Method TEST */
-    @Test 
+	@Test 
 	public void shouldStoreACustomer() throws Exception {
         /* arrange */
-        Customer created = new Customer(10L, "Byungsoo", "Kim", 26);
+        Customer created = new Customer(17L, "Byungsoo", "Kim", 26);
         
         /* act & assert */
 		EntityExchangeResult<Customer> returnResult = this.webClient
@@ -84,6 +97,42 @@ public class WebfluxApplicationTests {
             .expectBodyList(Customer.class)
             .hasSize(2)
             .contains(created1, created2);
+	}
+	
+	/* GET Method TEST + Search Condition */
+    @Test
+    public void shouldFindTheNameContainsKimStringlCustomers() throws Exception {
+        /* arrange */
+        Customer created1 = new Customer(121L, "Byungsoo", "Kim", 26);
+		Customer created2 = new Customer(122L, "admin", "admin", 57);
+		
+		Map<String, String> searchCondition = new HashMap<>();
+		searchCondition.put("search", "admin");
+
+        this.webClient
+			.post()
+			.uri("/api/customer")
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(BodyInserters.fromObject(created1))
+			.exchange()
+            .expectStatus().isOk();
+            
+        this.webClient
+			.post()
+			.uri("/api/customer")
+			.contentType(MediaType.APPLICATION_JSON)
+			.body(BodyInserters.fromObject(created2))
+			.exchange()
+			.expectStatus().isOk();
+
+        /* act & assert */
+		this.webClient
+			.get()
+			.uri("/api/customer?search=" + searchCondition.get("search"))
+			.exchange()
+            .expectBodyList(Customer.class)
+            .hasSize(1)
+            .contains(created2);
     }
 
 	/* GET Method TEST */
@@ -142,7 +191,7 @@ public class WebfluxApplicationTests {
 	}
 	
 	/* DELETE Method TEST */
-    @Test
+	@Test
 	public void shouldDeleteACustomer() throws Exception {
         /* arrange */
         Customer created1 = new Customer(1234L, "Byungsoo", "Kim", 26);
