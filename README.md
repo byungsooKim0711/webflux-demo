@@ -44,3 +44,4 @@ CREATE TABLE customer (
 
 # [2019-02-28]
 - 이름 검색조건에 대한 테스트코드 추가
+- ~ pact testing 공부중
