@@ -18,4 +18,6 @@ public interface CustomerMapper {
     public Integer updateCustomer(Customer customer);
 
     public void deleteCustomer(Long id);
+
+    public void deleteAllCustomers();
 }

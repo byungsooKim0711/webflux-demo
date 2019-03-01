@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.kimbs.webflux.model.Customer;
 import org.kimbs.webflux.repository.CustomerMapper;
@@ -25,9 +26,13 @@ public class CustomerServiceTest {
     @InjectMocks
     CustomerService service;
 
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
+    }
+
     @Test
     public void testFindAllInService() throws Exception {
-        MockitoAnnotations.initMocks(this);
 
         /* arrange */
         List<Customer> customers = new ArrayList<>();
@@ -49,8 +54,7 @@ public class CustomerServiceTest {
 
     @Test
     public void testFindByIdInService() throws Exception {
-        MockitoAnnotations.initMocks(this);
-
+        
         /* arrange */
         Customer customer = new Customer(1234L, "Byungsoo", "Kim", 26);
         when(customerMapper.selectCustomerById(1234L)).thenReturn(Optional.of(customer));
@@ -60,5 +64,36 @@ public class CustomerServiceTest {
 
         /* assert */
         assertEquals(customer, res);
+    }
+
+    @Test
+    public void testConditionalFindAllInService() throws Exception {
+        
+        /* arrange */
+        List<Customer> customers = new ArrayList<>();
+        Customer c1 = new Customer(1000L, "Byungsoo", "Kim", 26);
+        Customer c2 = new Customer(1001L, "admin", "admin", 61);
+        Customer c3 = new Customer(1001L, "test", "test", 99);
+        customers.add(c1);
+        customers.add(c2);
+        customers.add(c3);
+
+        Map<String, String> tmp = new HashMap<>();
+        tmp.put("search", "i");
+
+        List<Customer> conditionalCustomers = new ArrayList<>();
+        conditionalCustomers.add(c1);
+        conditionalCustomers.add(c2);
+
+        when(customerMapper.selectCustomers(tmp)).thenReturn(conditionalCustomers);
+
+        /* act */
+        List<Customer> res = service.getAllCustomers(tmp).collectList().block();
+
+        /* assert */
+        assertEquals(2, res.size());
+        assertEquals("admin", res.get(1).getFirstname());
+        assertEquals("admin", res.get(1).getLastname());
+        assertEquals(61, res.get(1).getAge());
     }
 }

@@ -41,3 +41,7 @@ CREATE TABLE customer (
 
 # [2019-02-27]
 - H2 (In-Memory Database)로 테스트 설정환경 구성
+
+# [2019-02-28]
+- 이름 검색조건에 대한 테스트코드 추가
+- ~ pact testing 공부중
