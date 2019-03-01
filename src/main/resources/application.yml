@@ -4,7 +4,7 @@ spring:
     username: root
     password: 1234
     driverClassName: org.mariadb.jdbc.Driver
-
+    
 server: 
   compression:
     enabled: true
