@@ -13,7 +13,7 @@ server:
   ##  keyStoreType: test
   ##  keyAlias: test
   ##  trust-store: test
-  ##  trust-store-password: test 
+  ##  trust-store-password: test
 
   compression:
     enabled: true
@@ -55,9 +55,26 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-    # data: classpath:schema.sql
-    initialization-mode: ALWAYS
+    data: # classpath:sql/dml/... # DML
+    schema: classpath:sql/ddl/schema.sql # DDL
+    initialization-mode: ALWAYS 
   h2:
     console:
       enabled: true
-  
+
+mybatis:
+  mapper-locations: mybatis/mapper/**/*.xml
+  type-aliases-package: org.kimbs
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: false
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: true
+    auto-mapping-behavior: PARTIAL
+    default-executor-type: SIMPLE
+    default-statement-timeout: 180
+    safe-row-bounds-enabled: false
+    map-underscore-to-camel-case: true
+    local-cache-scope: SESSION
+    jdbc-type-for-null: OTHER
