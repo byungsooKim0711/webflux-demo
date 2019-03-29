@@ -11,13 +11,13 @@ import org.springframework.web.reactive.function.server.RouterFunctions;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
-public class Test implements WebFluxConfigurer {
+public class TestRouterFunction implements WebFluxConfigurer {
 	
     @Bean
     public RouterFunction<ServerResponse> multipleRouterFunctionTest(CustomerHandler customerHandler) {
         return 
             RouterFunctions
-                .route(RequestPredicates.GET("/test").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll);
+                .route(RequestPredicates.GET("/pact").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll);
     }
     
 }
