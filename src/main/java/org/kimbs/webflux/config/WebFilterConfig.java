@@ -1,4 +1,4 @@
-package org.kimbs.webflux.log;
+package org.kimbs.webflux.config;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
