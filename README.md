@@ -11,41 +11,33 @@ CREATE TABLE customer (
 );
 ```
 
-# RUN
 ``` bash
-- npm install axios
-- npm install vuex --save
-- vuex install
-- npm install vue-js-modal --save
-- vue-js-modal install
-- npm run dev (port: 80)
-- ./mvnw spring-boot:run (port: 8080)
-```
-
-# [2019-02-12]
+## [2019-02-12]
 - mybatis, mariadb와 연동
 
-# [2019-02-13]
+## [2019-02-13]
 - vue.js 연동
 - axios 통신
 
-# [2019-02-13]
+## [2019-02-13]
 - Read, Delete 완성
 
-# [2019-02-13]
+## [2019-02-13]
 - docker + jenkins 테스트
 
-# [2019-02-15]
-
+## [2019-02-15]
 .....
 
-# [2019-02-27]
+## [2019-02-27]
 - H2 (In-Memory Database)로 테스트 설정환경 구성
 
-# [2019-02-28]
+## [2019-02-28]
 - 이름 검색조건에 대한 테스트코드 추가
-- ~ pact testing 공부중
 
-# [2019-03-02]
+## [2019-03-02]
 - Repository Test 추가
-- Customer Validation Test는 왜 skip 되는가? ...
+- Customer Validation Test 추가
+
+## [2019-03-29]
+- Elasticsearch로 로그전송코드 추가
+```
