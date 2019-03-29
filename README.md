@@ -41,3 +41,32 @@ CREATE TABLE customer (
 ## [2019-03-29]
 - Elasticsearch로 로그전송코드 추가
 ```
+
+``` bash
+kibana에서 시각화하여 간단하게 보기위해 index template을 추가하였습니다.
+
+- controller-index.json
+{
+    "index_patterns" : [
+        "controller-log-*"
+    ],
+    "mappings" : {
+        "log" : {
+            "properties" : {
+                "httpMethod" : {
+                    "type" : "keyword"
+                },
+                "urlPattern" : {
+                    "type" : "keyword"
+                },
+                "requestedAt" : {
+                    "type": "date"
+                }
+             }
+         }
+    }
+}
+
+$ cd {controller-index.json이 있는 path} 로 이동
+$ curl -XPUT "http://localhost:9200/_template/controller-log" -H "Content-Type: application/JSON" -d @controller-index.json
+```
