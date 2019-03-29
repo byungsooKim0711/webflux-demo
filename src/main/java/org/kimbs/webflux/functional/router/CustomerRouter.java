@@ -1,6 +1,7 @@
 package org.kimbs.webflux.functional.router;
 
 import org.kimbs.webflux.functional.handler.CustomerHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -12,11 +13,12 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 
 @Configuration
 public class CustomerRouter implements WebFluxConfigurer {
+
+    @Autowired
+    private RoutingFilterFunction routingFilterFunction;
 	
     @Bean
     public RouterFunction<ServerResponse> customerRouterFunction(CustomerHandler customerHandler) {
-        RoutingFilterFunction f = new RoutingFilterFunction();
-
         return
             RouterFunctions
                 .route(RequestPredicates.GET("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::getAll)
@@ -24,6 +26,6 @@ public class CustomerRouter implements WebFluxConfigurer {
         		.andRoute(RequestPredicates.POST("/api/customer").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::postCustomer)
                 .andRoute(RequestPredicates.PUT("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::putCustomer)
                 .andRoute(RequestPredicates.DELETE("/api/customer/{id}").and(RequestPredicates.accept(MediaType.APPLICATION_JSON)), customerHandler::deleteCustomer)
-                .filter(f);
+                .filter(routingFilterFunction);
     }    
 }
