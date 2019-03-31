@@ -5,19 +5,15 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
 
-import org.apache.http.HttpHost;
 import org.elasticsearch.action.ActionListener;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.kimbs.webflux.log.HandlerLog;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import lombok.extern.slf4j.Slf4j;
@@ -27,22 +23,25 @@ import lombok.extern.slf4j.Slf4j;
 public class EsLogSender {
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyyMMdd");
     
-    private final RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("localhost", 9200,  "http")));
+    private final RestHighLevelClient restHighLevelClient;
 
-    @Autowired
-    private ObjectMapper mapper;
+    private final ObjectMapper objectMapper;
 
+    public EsLogSender(RestHighLevelClient restHighLevelClient, ObjectMapper objectMapper) {
+        this.restHighLevelClient = restHighLevelClient;
+        this.objectMapper = objectMapper;
+    }
 
     public void send(List<HandlerLog> list) {
         try {
             String indexName = "controller-log-" + LocalDate.now().format(FORMATTER);
             BulkRequest request = new BulkRequest();
-            mapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+
             for (HandlerLog each : list) {
-                request.add(new IndexRequest(indexName, "log").source(mapper.writeValueAsBytes(each), XContentType.JSON));
+                request.add(new IndexRequest(indexName, "log").source(objectMapper.writeValueAsString(each), XContentType.JSON));
             }
 
-            client.bulkAsync(request, RequestOptions.DEFAULT, new ActionListener<BulkResponse>() {
+            restHighLevelClient.bulkAsync(request, RequestOptions.DEFAULT, new ActionListener<BulkResponse>() {
                 @Override
                 public void onResponse(BulkResponse response) {
                     log.debug("Send to logs to ES.");
