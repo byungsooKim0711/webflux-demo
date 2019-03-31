@@ -65,7 +65,7 @@ public class CustomerRepositoryTests {
     }
 
     @Test
-    public void shouldFindAllMembers() throws Exception {
+    public void shouldFindAllCustomers() throws Exception {
         /* arrange */
         Customer c1 = new Customer(100L, "TEST01", "TEST01", 99);
         Customer c2 = new Customer(101L, "TEST02", "TEST02", 77);
