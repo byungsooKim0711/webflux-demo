@@ -44,6 +44,12 @@ mybatis:
     local-cache-scope: SESSION
     jdbc-type-for-null: OTHER
 
+elastic:
+  search:
+    host: localhost
+    protocol: http
+    port: 9200
+
 
 ---
 spring:

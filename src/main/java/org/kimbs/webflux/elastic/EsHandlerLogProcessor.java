@@ -35,7 +35,7 @@ public class EsHandlerLogProcessor {
     @PreDestroy
     public void destroy() {
         if (disposable != null) {
-            disposable.dispose();
+            disposable.dispose(); 
         }
     }
 }
