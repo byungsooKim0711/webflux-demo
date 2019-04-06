@@ -1,6 +1,6 @@
 package org.kimbs.webflux.service;
 
-import java.util.Map;
+import java.util.List;
 
 import org.kimbs.webflux.model.Customer;
 import org.kimbs.webflux.repository.CustomerMapper;
@@ -21,8 +21,8 @@ public class CustomerService {
         // return Mono.fromSupplier(() -> this.customerMapper.selectCustomerById(id).get());
     }
 
-    public Flux<Customer> getAllCustomers(Map<String, String> map) {
-        return Flux.fromIterable(this.customerMapper.selectCustomers(map));
+    public Flux<Customer> getAllCustomers(List<String> list) {
+        return Flux.fromIterable(this.customerMapper.selectCustomers(list));
     }
 
     public Mono<Customer> saveCustomer(Mono<Customer> customer) {

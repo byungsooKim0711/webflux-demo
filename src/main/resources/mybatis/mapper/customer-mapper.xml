@@ -14,7 +14,7 @@
             id = #{id}
     </select>
 
-    <select id="selectCustomers" resultType="org.kimbs.webflux.model.Customer" parameterType="map">
+    <select id="selectCustomers" resultType="org.kimbs.webflux.model.Customer" parameterType="list">
         SELECT 
               id
             , firstname
@@ -22,11 +22,20 @@
             , age
         FROM
             customer
-        <if test="null != search">
+        
+        <if test="null != list and !list.isEmpty()">
+            <where>
+                <foreach collection="list" item="item" separator="OR">
+                       firstname LIKE CONCAT('%', #{item}, '%')
+                    OR lastname LIKE CONCAT('%', #{item}, '%')
+                </foreach>
+            </where>
+        </if>
+        <!-- <if test="null != search">
         WHERE 
                firstname LIKE CONCAT('%', #{search}, '%')
             OR lastname LIKE CONCAT('%', #{search}, '%')
-        </if>
+        </if> -->
     </select>
 
     <insert id="inserCustomer" parameterType="org.kimbs.webflux.model.Customer" useGeneratedKeys="true" keyProperty="id" keyColumn="id">

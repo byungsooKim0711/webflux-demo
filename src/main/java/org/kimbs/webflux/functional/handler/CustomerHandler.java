@@ -1,5 +1,10 @@
 package org.kimbs.webflux.functional.handler;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.kimbs.webflux.model.Customer;
 import org.kimbs.webflux.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +24,20 @@ public class CustomerHandler {
     private CustomerService customerService;
 
     public Mono<ServerResponse> getAll(ServerRequest request) {
-        Flux<Customer> customers = this.customerService.getAllCustomers(request.queryParams().toSingleValueMap());
+        String str = request.queryParams().toSingleValueMap().get("search");
+        List<String> list = new ArrayList<>();
+        if (str != null) {
+            Pattern pattern = Pattern.compile("\\S+");
+            Matcher matcher = pattern.matcher(str);
+
+            while (matcher.find()) {
+                list.add(matcher.group());
+            }
+        }
+
+        Flux<Customer> customers = this.customerService.getAllCustomers(list);
+
+        // Flux<Customer> customers = this.customerService.getAllCustomers(request.queryParams().toSingleValueMap());
         return ServerResponse
                 .ok()
                 .contentType(MediaType.APPLICATION_JSON)
