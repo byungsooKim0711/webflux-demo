@@ -59,7 +59,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created))
 			.exchange()
-			.expectStatus().isOk()
+			.expectStatus().isCreated()
 			.expectBody(Customer.class)
 			.returnResult();
 
@@ -79,7 +79,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created1))
 			.exchange()
-            .expectStatus().isOk();
+            .expectStatus().isCreated();
             
         this.webClient
 			.post()
@@ -87,7 +87,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created2))
 			.exchange()
-			.expectStatus().isOk();
+			.expectStatus().isCreated();
 
         /* act & assert */
 		this.webClient
@@ -115,7 +115,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created1))
 			.exchange()
-            .expectStatus().isOk();
+            .expectStatus().isCreated();
             
         this.webClient
 			.post()
@@ -123,7 +123,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created2))
 			.exchange()
-			.expectStatus().isOk();
+			.expectStatus().isCreated();
 
         /* act & assert */
 		this.webClient
@@ -147,7 +147,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created1))
 			.exchange()
-            .expectStatus().isOk();
+            .expectStatus().isCreated();
 
 
         /* act & assert */
@@ -172,7 +172,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created1))
 			.exchange()
-			.expectStatus().isOk();
+			.expectStatus().isCreated();
 			
 		created1.setFirstname("@@@@");
 		created1.setLastname("@@@@");
@@ -202,7 +202,7 @@ public class WebfluxApplicationTests {
 			.contentType(MediaType.APPLICATION_JSON)
 			.body(BodyInserters.fromObject(created1))
 			.exchange()
-            .expectStatus().isOk();
+            .expectStatus().isCreated();
 
         /* act */
 		this.webClient
@@ -218,7 +218,7 @@ public class WebfluxApplicationTests {
 			.get()
 			.uri("/api/customer/{id}", 1234)
 			.exchange()
-            .expectBodyList(Customer.class)
+			.expectBodyList(Customer.class)
             .hasSize(0);
 	}
 }

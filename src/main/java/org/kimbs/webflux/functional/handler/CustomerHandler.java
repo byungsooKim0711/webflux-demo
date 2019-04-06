@@ -1,5 +1,6 @@
 package org.kimbs.webflux.functional.handler;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -59,8 +60,7 @@ public class CustomerHandler {
         return customerService.saveCustomer(customer)
             .flatMap(c -> 
                 ServerResponse
-                    // .created()
-                    .ok()
+                    .created(URI.create("/api/customer/" + c.getId()))
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(BodyInserters.fromObject(c))
             );
