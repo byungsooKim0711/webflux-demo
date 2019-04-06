@@ -3,9 +3,8 @@ package org.kimbs.webflux.unittests;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,7 +26,7 @@ public class CustomerRepositoryTests {
     @Test
     public void shouldFindNoCustomersIfrepositoryIsEmpty() throws Exception {
         /* arrange */
-        Map<String, String> search = new HashMap<>();
+        List<String> search = new ArrayList<>();
 
         /* act */
         List<Customer> customers = customerMapper.selectCustomers(search);
